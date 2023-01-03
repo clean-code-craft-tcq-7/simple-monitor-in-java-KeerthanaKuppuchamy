@@ -2,27 +2,28 @@ package vitals;
 
 public class BatteryManagement {
 
-	static boolean isThresholdBreach(float startThreshold, float endThreshold, float currentValue,
-			String errorMessage) {
-		if (currentValue < startThreshold || currentValue > endThreshold) {
-			System.out.println(errorMessage + " is out of range!");
-			return false;
-		}
-		return true;
-	}
+	static String language = "English";
 
-	static boolean isChargeRateNormal(float limit, float currentValue, String errorMessage) {
-		if (currentValue > limit) {
-			System.out.println(errorMessage + " is out of range!");
+	static boolean isThresholdBreach(EFunctions eFunction, float currentValue) {
+		if (eFunction.showWarning) {
+			if (EarlyWarningExtension.checkForLowWarning(eFunction, currentValue)) {
+				LanguageExtension.printMessage(language, eFunction.name + " is nearing lower threshold limit");
+			} else if (EarlyWarningExtension.checkForHighWarning(eFunction, currentValue)) {
+				LanguageExtension.printMessage(language, eFunction.name + " is nearing higher threshold limit");
+			}
+		}
+		if (currentValue < eFunction.startThreshold || currentValue > eFunction.endThreshold) {
+			LanguageExtension.printMessage(language, eFunction.name + " is out of range!");
 			return false;
 		}
 		return true;
 	}
 
 	static boolean batteryIsOk(float temperature, float soc, float chargeRate) {
-		boolean isTemperatureNormal = isThresholdBreach(0, 45, temperature, "Temperature");
-		boolean isSocNormal = isThresholdBreach(20, 80, soc, "State of Charge");
-		boolean isChargeRateNormal = isChargeRateNormal(0.8f, chargeRate, "Charge Rate");
+		boolean isTemperatureNormal = isThresholdBreach(EFunctions.TEMPERATURE, temperature);
+		boolean isSocNormal = isThresholdBreach(EFunctions.SOC, soc);
+		boolean isChargeRateNormal = isThresholdBreach(EFunctions.CHARGE_RATE, chargeRate);
 		return isTemperatureNormal && isSocNormal && isChargeRateNormal;
 	}
+
 }
