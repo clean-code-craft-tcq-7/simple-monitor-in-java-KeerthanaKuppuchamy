@@ -6,11 +6,7 @@ public class BatteryManagement {
 
 	static boolean isThresholdBreach(EFunctions eFunction, float currentValue) {
 		if (eFunction.showWarning) {
-			if (EarlyWarningExtension.checkForLowWarning(eFunction, currentValue)) {
-				LanguageExtension.printMessage(language, eFunction.name + " is nearing lower threshold limit");
-			} else if (EarlyWarningExtension.checkForHighWarning(eFunction, currentValue)) {
-				LanguageExtension.printMessage(language, eFunction.name + " is nearing higher threshold limit");
-			}
+			EarlyWarningExtension.checkWarning(language, eFunction, currentValue);
 		}
 		if (currentValue < eFunction.startThreshold || currentValue > eFunction.endThreshold) {
 			LanguageExtension.printMessage(language, eFunction.name + " is out of range!");

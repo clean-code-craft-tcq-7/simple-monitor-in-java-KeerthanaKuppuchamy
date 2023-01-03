@@ -2,6 +2,13 @@ package vitals;
 
 public class Constants {
 
+	public static final String ENGLISH = "English";
+	public static final String GERMAN = "German";
+
+	public static final String TEMPERATURE = "Temperature";
+	public static final String SOC = "State of Charge";
+	public static final String CHARGE_RATE = "Charge Rate";
+
 	public static final String TEMPERATURE_ERROR_ENGLISH = "Temperature is out of range!";
 	public static final String SOC_ERROR_ENGLISH = "State of Charge is out of range!";
 	public static final String CHARGE_RATE_ERROR_ENGLISH = "Charge Rate is out of range!";
@@ -12,8 +19,8 @@ public class Constants {
 
 	public static final String TEMPERATURE_LOW_WARN_ENGLISH = "Temperature is nearing lower threshold limit";
 	public static final String TEMPERATURE_HIGH_WARN_ENGLISH = "Temperature is nearing higher threshold limit";
-	public static final String SOC_LOW_WARN_ENGLISH = "State of charge is nearing lower threshold limit";
-	public static final String SOC_HIGH_WARN_ENGLISH = "State of charge is nearing higher threshold limit";
+	public static final String SOC_LOW_WARN_ENGLISH = "State of Charge is nearing lower threshold limit";
+	public static final String SOC_HIGH_WARN_ENGLISH = "State of Charge is nearing higher threshold limit";
 	public static final String CHARGE_RATE_LOW_WARN_ENGLISH = "Charge Rate is nearing lower threshold limit";
 	public static final String CHARGE_RATE_HIGH_WARN_ENGLISH = "Charge Rate is nearing higher threshold limit";
 
