@@ -3,10 +3,12 @@ package vitals;
 public class EarlyWarningExtension {
 
 	public static void checkWarning(String language, EFunctions eFunction, float currentValue) {
-		if (checkForLowWarning(eFunction, currentValue)) {
-			LanguageExtension.printMessage(language, eFunction.name + " is nearing lower threshold limit");
-		} else if (checkForHighWarning(eFunction, currentValue)) {
-			LanguageExtension.printMessage(language, eFunction.name + " is nearing higher threshold limit");
+		if (eFunction.showWarning) {
+			if (checkForLowWarning(eFunction, currentValue)) {
+				LanguageExtension.printMessage(language, eFunction.name + " is nearing lower threshold limit");
+			} else if (checkForHighWarning(eFunction, currentValue)) {
+				LanguageExtension.printMessage(language, eFunction.name + " is nearing higher threshold limit");
+			}
 		}
 	}
 
